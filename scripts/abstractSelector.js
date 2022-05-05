@@ -1,6 +1,6 @@
 import recipes from './data/recipes.js'
 
-class AbstractSelector {
+export default class AbstractSelector {
     constructor(recipes, type, selectCallback) {
       this.loadRecipes(recipes)
       this.type = type
@@ -15,41 +15,5 @@ class AbstractSelector {
       console.log(this.type, 'list :', this.itemsList)
     }
   }
-  
-  class ApplianceSelector extends AbstractSelector {
-    constructor(recipes, type) {
-      super(recipes, type)
-    }
-    
-    loadRecipes(recipes) {
-      this.itemsList = Array.from(new Set(recipes.map(r => r.appliance)))
-    }
-  }
-  class IngredientSelector extends AbstractSelector {
-    constructor(recipes, type) {
-      super(recipes, type)
-    }
-    
-    loadRecipes(recipes) {
-      this.itemsList = Array.from(new Set(recipes.map(r => r.appliance)))
-    }
-  }
-  class UstensilSelector extends AbstractSelector {
-    constructor(recipes, type) {
-      super(recipes, type)
-    }
-    
-    loadRecipes(recipes) {
-      this.itemsList = Array.from(new Set(recipes.map(r => r.ustensils).flat()))
-    }
-  }
-  
-const applianceSelector = new ApplianceSelector(recipes, 'Appliance')
-const ustensilSelector = new UstensilSelector(recipes, 'Ustensil')
-const ingredientSelector = new IngredientSelector(recipes, 'Ingredient')
-
 
 console.log(recipes)
-applianceSelector.displaySelectableItems()
-ustensilSelector.displaySelectableItems()
-ingredientSelector.displaySelectableItems()  
