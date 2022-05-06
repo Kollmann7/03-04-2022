@@ -2,7 +2,7 @@ import recipes from './data/recipes.js';
 import AbstractSelector from './abstractSelector.js';
 
 
-class IngredientSelector extends AbstractSelector {
+export default class IngredientSelector extends AbstractSelector {
   constructor(recipes, type) {
     super(recipes, type)
   }

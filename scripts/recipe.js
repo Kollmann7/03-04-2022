@@ -1,7 +1,8 @@
 import recipes from './data/recipes.js';
 
-export class Recipe {
+export default class Recipe {
   constructor(recipe) {
+
     this.id = recipe.id
     this.name = recipe.name
     this.ingredients = recipe.ingredients
@@ -17,22 +18,3 @@ export class Recipe {
     return this.ingredients.some(ingredientItem => ingredientItem.ingredient.includes(text))
   }
 }
-
-export default class RecipeList {
-  constructor(recipeData) {
-    this.recipes = recipeData.map(recipe => new Recipe(recipe))
-    this.displayedRecipes = this.recipes
-  }
-  
-  filterByIngredient(ingredient) {
-    this.displayedRecipes = this.recipes.filter(recipe => recipe.containsIngredient(ingredient))
-  }
-  
-  filterByIngredientText(text) {
-    this.displayedRecipes = this.recipes.filter(recipe => recipe.ingredientIncludesText(text))
-  }
-}
-
-const recipeList = new RecipeList(recipes)
-
-
