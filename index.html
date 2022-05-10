@@ -16,20 +16,18 @@
         </h1>
     </header>
     <main>
-    <div class="input-group d-flex justify-content-center">
-        <div class="w-100 p-3 d-flex form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Recherche une recette"/>
-        </div>
-    </div>
+    <label for="main-search" class="main-search">
+      <input type="search" id="form1" class="form-control search-bar" placeholder="Rechercher une recette"/>
+    </label>
     <div class="tags">
-
+      <button type="button" class="btn btn-primary keyword-tag">Primary<img src="./Img/cross.svg" class="delete-tag"></button>
     </div>
     <div class="dropdowns">
       <div class="btn-group">
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           Ingredients
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu ingredients-color">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -42,7 +40,7 @@
         <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           Ustensils
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu ustensils-color">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -55,7 +53,7 @@
         <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           Appareil
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu appareil-color">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -68,48 +66,78 @@
       <div class="container">
         <div class="row row-cols-3">
           <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+            <div class="card" style="width: 20rem;">
+              <img src="./Img/grey-square.jpg" class="card-img-top" alt="Image de la recette">
+              <div class="card-body">
+                <div class="card-body-top">
+                  <div class="card-title">
+                    <h2 >Limonade de Coco</h2>
+                  </div>
+                  <div class="cook-time">
+                    <img src="./Img/timer.svg" class="timer" alt="Timer icon">
+                    <span>10 Mins</span>
+                  </div>
+                  
+                </div>
+                <div class="card-body-bot">
+                  <ul class="ingredients-list">
+                    <li><strong>Lait de coco:</strong><span> 400ml</span></li>
+                    <li><strong>jus de citron:</strong> 2</li>
+                    <li><strong>Créme de coco:</strong> 4 cuillères à soupe</li>
+                    <li><strong>Sucre:</strong> 20g<li>
+                    <li><strong>Glaçons:</strong> 2</li>
+                  </ul>
+                  <p class="description-recipes">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 20rem;">
+              <img src="./Img/grey-square.jpg" class="card-img-top" alt="Image de la recette">
+              <div class="card-body">
+                <div class="card-body-top">
+                  <p>Limonade de Coco</p> 
+                  <span>10 Mins</span>
+                </div>
+                <div class="card-body-bot">
+                  <ul class="ingredients-list">
+                    <li><strong>Lait de coco:</strong> <span> 400ml</span></li>
+                    <li><strong>jus de citron:</strong> 2</li>
+                    
+                  </ul>
+                  <p class="description-recipes">Mettre les glaçons.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 20rem;">
+              <img src="./Img/grey-square.jpg" class="card-img-top" alt="Image de la recette">
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+            <div class="card" style="width: 20rem;">
+              <img src="./Img/grey-square.jpg" class="card-img-top" alt="Image de la recette">
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+            <div class="card" style="width: 20rem;">
+              <img src="./Img/grey-square.jpg" class="card-img-top" alt="Image de la recette">
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+            <div class="card" style="width: 20rem;">
+              <img src="./Img/grey-square.jpg" class="card-img-top" alt="Image de la recette">
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
