@@ -11,7 +11,7 @@ export default class TagList {
   
   displayDOM() {
     const tagDOM = document.querySelector("tags")
-    tagDOM.innerHTML = `<button type="button" class="btn btn-primary">Primary</button>
+    tagDOM.innerHTML = `<button type="button" class="btn keyword-tag">Primary<img src="./Img/cross.svg" class="delete-tag"></button>
     `
     console.log(tagDOM)
     return tagDOM
