@@ -9,12 +9,15 @@ export default class Selector {
     constructor(selectItemCallback) {
         this.selectItemCallback = selectItemCallback
         }
-    // dropdownsDOM(){
-    //     const dropdowns = document.querySelector('dropdown-menu')
-    //     dropdowns.innerHTML = `<li><a class="dropdown-item" href="#">Action</a></li>`
+    dropdownsDOM(){
+        const dropdowns = document.querySelector('dropdown-menu')
+        dropdowns.innerHTML = `<li><a class="dropdown-item" href="#">Sucre</a></li>`
+        return dropdowns
         
-    // }
-
+    }
+    getDOM(){
+        return this.dropdownsDOM()
+    }
         
 }
 

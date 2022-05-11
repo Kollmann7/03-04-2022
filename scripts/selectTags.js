@@ -9,17 +9,19 @@ export default class TagList {
     this.tags.push(tag)
   }
   
-  displayDOM() {
+  displayTagsDOM() {
     const tagDOM = document.querySelector("tags")
     tagDOM.innerHTML = `<button type="button" class="btn keyword-tag">Primary<img src="./Img/cross.svg" class="delete-tag"></button>
     `
     console.log(tagDOM)
     return tagDOM
   }
-  
+  getDOM(){
+    return this.displayTagsDOM()
+  }
   removeTag(tag) {
     this.tags.remove(tag)
-    this.displayDOM()
+    this.displayTagsDOM()
     this.removeCallback()
   }
 }
