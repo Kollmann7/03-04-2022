@@ -5,6 +5,8 @@ export default class Recipe {
 
     this.id = recipe.id
     this.name = recipe.name
+    this.time = recipe.time
+    this.description = recipe.description
     this.ingredients = recipe.ingredients
     this.appliance = recipe.appliance
     this.ustensils = recipe.ustensils
@@ -13,8 +15,13 @@ export default class Recipe {
   containsIngredient(ingredient) {
     return this.ingredients.some(ingredientItem => ingredientItem.ingredient === ingredient)
   }
-  
-  ingredientIncludesText(text) {
-    return this.ingredients.some(ingredientItem => ingredientItem.ingredient.includes(text))
+  containsUstensil(ustensil){
+    return this.ustensils.includes(ustensil)
+  }
+  nameIncludeText(text){
+    return this.name.toLowerCase().includes(text.toLowerCase())
+  }
+  descIncludeText(text){
+    return this.description.toLowerCase().includes(text.toLowerCase())
   }
 }

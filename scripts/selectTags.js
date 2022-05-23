@@ -7,21 +7,36 @@ export default class TagList {
   
   addTag(tag) {
     this.tags.push(tag)
+    this.displayTagsDOM()
+
   }
   
   displayTagsDOM() {
-    const tagDOM = document.querySelector("tags")
-    tagDOM.innerHTML = `<button type="button" class="btn keyword-tag">Primary<img src="./Img/cross.svg" class="delete-tag"></button>
-    `
-    console.log(tagDOM)
-    return tagDOM
+    
+    const keyWordTag = document.createElement('button')
+    keyWordTag.className = 'btn keyword-tag'
+    keyWordTag.textContent = this.text
+    
+    const img = document.createElement('img')
+    img.className = 'delete-tag'
+    img.src = './Img/cross.svg'
+    img.alt = 'delete'
+    
+    keyWordTag.appendChild(img)
+    
+    keyWordTag.addEventListener('click', (e) =>
+    this.removeTag()
+    )
+    
+    return keyWordTag
   }
-  getDOM(){
-    return this.displayTagsDOM()
-  }
+  
   removeTag(tag) {
     this.tags.remove(tag)
     this.displayTagsDOM()
     this.removeCallback()
   }
 }
+
+const test2 = new TagList
+test2.addTag()

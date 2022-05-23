@@ -8,24 +8,31 @@ import Selector from './selector.js'
 
 class Page {
   constructor() {
-    this.tagList = new TagList(this.refresh)
+    this.tagList = new TagList(this.onRemoveTag)
     this.recipeList = new RecipeList()
-    console.log(this.recipeList)
     this.ustensilSelector = new Selector(this.addTag)
   }
   
   refresh() {
     // Récupérer les filtres (tags + searchBar)
-    const tagsAppliances = ['Blender','Saladier']
-    const tagsUstensil = ['fouet','moule à gateaux', 'casserolle']
-    const searchBar = 'coco'
-    const recipeListfilter = this.recipeList.filtering(tagsAppliances, tagsUstensil, searchBar)
 
-    // this.ustensilSelector.loadRecipes(this.recipeList)
+    const searchBarForm = document.getElementById('form1')
+    searchBarForm.addEventListener('input', this.recipeList.filtering)
+    console.log(this.recipeList.filtering)
+
+    // const recipeListfilter = this.recipeList.filtering(tagsAppliances, tagsUstensil, tagsIngredient)
+
+    // const ustensilSelector = this.ustensilSelector.loadRecipes(this.recipeList)
+    
   }
-  
+  onRemoveTag(){
+    this.refresh()
+  }
   addTag(tag) {
     this.tagList.addTag(tag)
     this.refresh()
   }
 }
+
+const mainPage = new Page 
+mainPage.refresh()
