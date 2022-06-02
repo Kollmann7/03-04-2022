@@ -1,3 +1,4 @@
+import { TAG_TYPE } from './constants.js'
 import recipes from './data/recipes.js'
 import Recipe from './recipe.js'
 
@@ -5,8 +6,6 @@ import Recipe from './recipe.js'
 export default class RecipeList {
   constructor(recipe) {
     this.recipes = recipes.map(recipe => new Recipe(recipe))
-    this.displayedRecipes = this.recipes
-    
   }
  
   ingredientsList(ingredientList){
@@ -96,9 +95,13 @@ export default class RecipeList {
   noResultDOM(){
     const noRecipesDOM = document.getElementById('recipe-container')
 
+    noRecipesDOM.innerHTML = ''
     const container = document.createElement('div')
     container.className = 'no-recipe'
-    container.textContent = ` Votre recherche ne correspond a aucun critère `
+    container.textContent = ` « Aucune recette ne correspond à votre critère… vous pouvez
+    chercher « tarte aux pommes », « poisson », etc. `
+
+    noRecipesDOM.appendChild(container)
 
     return noRecipesDOM
   }
@@ -112,11 +115,16 @@ export default class RecipeList {
     )
   }
 
-  filtering(tagsAppliances, tagsUstensil, tagsIngredient, searchBar) {
-    tagsAppliances = ['Four']
-    tagsUstensil = ['fouet']
-    tagsIngredient = ['Lait']
-    searchBar = ''
+  filtering(tags, searchBar) {
+    console.log('filtering searchBar',searchBar)
+    const tagsAppliances = tags.filter( tag => tag.type === TAG_TYPE.APPLIANCE).map(tag => tag.label)
+    const tagsUstensil = tags.filter( tag => tag.type === TAG_TYPE.USTENSIL).map(tag => tag.label)
+    const tagsIngredient = tags.filter( tag => tag.type === TAG_TYPE.INGREDIENT).map(tag => tag.label)
+    
+    console.log('filtering tagsAppliances',tagsAppliances)
+    console.log('filtering tagsUstensil',tagsUstensil)
+    console.log('filtering tagsIngredient',tagsIngredient)
+    
     let filterList = this.recipes
       .filter( recipe => (
         this.recipeVerifySearch(tagsAppliances, tagsUstensil, tagsIngredient, searchBar, recipe)
@@ -133,5 +141,3 @@ export default class RecipeList {
   }
 }
 
-const test = new RecipeList
-test.filtering()
