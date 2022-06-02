@@ -6,7 +6,6 @@ export default class AbstractSelector {
       this.type = type
       this.selectCallback = selectCallback
       this.displaySelectableItems()
-
     }
     
     loadRecipes(recipes) {
