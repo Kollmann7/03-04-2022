@@ -4,21 +4,16 @@ import ApplianceSelector from './appliance.js'
 
 export default class TagList {
   constructor(removeCallback) {
-    this.tags = []
     this.removeCallback = removeCallback
-    const tag = document.querySelectorAll('.dropdown-item')
-    console.log(tag)
-    
+    this.tags = []
   }
   
   addTag(tag) {    
     this.tags.push(tag)
     this.displayTagsDOM()
-    console.log('tag ajouter a tagList', this)
   }
   
   displayTagsDOM() {
-
     const tagList = document.querySelector('.tags')
 
     tagList.innerHTML = ''
@@ -26,13 +21,16 @@ export default class TagList {
       const button = document.createElement('button')
       button.textContent = tag.label
       tagList.appendChild(button)
+
+      button.addEventListener('click', () => {
+        this.removeTag(tag)
+        this.removeCallback()
+      })
     })
-    
   }
   
   removeTag(tag) {
-    this.tags.remove(tag)
+    this.tags = this.tags.filter((t) => t !== tag)
     this.displayTagsDOM()
-    this.removeCallback()
   }
 }
