@@ -1,34 +1,33 @@
+import recipes from './data/recipes.js'
+import ApplianceSelector from './appliance.js'
+
 
 export default class TagList {
   constructor(removeCallback) {
     this.tags = []
     this.removeCallback = removeCallback
+    const tag = document.querySelectorAll('.dropdown-item')
+    console.log(tag)
+    
   }
   
-  addTag(tag) {
+  addTag(tag) {    
     this.tags.push(tag)
     this.displayTagsDOM()
-
+    console.log('tag ajouter a tagList', this)
   }
   
   displayTagsDOM() {
+
+    const tagList = document.querySelector('.tags')
+
+    tagList.innerHTML = ''
+    this.tags.forEach((tag) => {
+      const button = document.createElement('button')
+      button.textContent = tag.label
+      tagList.appendChild(button)
+    })
     
-    const keyWordTag = document.createElement('button')
-    keyWordTag.className = 'btn keyword-tag'
-    keyWordTag.textContent = this.text
-    
-    const img = document.createElement('img')
-    img.className = 'delete-tag'
-    img.src = './Img/cross.svg'
-    img.alt = 'delete'
-    
-    keyWordTag.appendChild(img)
-    
-    keyWordTag.addEventListener('click', (e) =>
-    this.removeTag()
-    )
-    
-    return keyWordTag
   }
   
   removeTag(tag) {
@@ -37,6 +36,3 @@ export default class TagList {
     this.removeCallback()
   }
 }
-
-const test2 = new TagList
-test2.addTag()

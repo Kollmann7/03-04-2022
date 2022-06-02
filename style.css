@@ -112,3 +112,14 @@ body{
     line-height: 1.2;
     max-height: calc(7 * 15px);
 }
+/*No-recipe alert*/
+
+.no-recipe{
+    width: 80%;
+    height: 200px;
+    color: red;
+}
+
+.dropdown-menu {
+    color: #bd2130;
+}

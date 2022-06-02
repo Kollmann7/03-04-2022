@@ -11,7 +11,5 @@ export default class UstensilSelector extends AbstractSelector {
     }
   }
 
-const ustensilSelector = new UstensilSelector(recipes, 'Ustensil')
-ustensilSelector.displaySelectableItems()
 
 
