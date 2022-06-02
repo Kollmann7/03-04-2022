@@ -12,7 +12,3 @@ export default class IngredientSelector extends AbstractSelector {
     this.itemsList = Array.from(new Set(this.ingredientsList.map(i => i.ingredient)))
   }
 }
-
-const ingredientSelector = new IngredientSelector(recipes, 'Ingredient')
-ingredientSelector.displaySelectableItems()
-

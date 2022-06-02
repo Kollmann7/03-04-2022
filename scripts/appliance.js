@@ -3,7 +3,7 @@ import AbstractSelector from './abstractSelector.js';
 
 export default class ApplianceSelector extends AbstractSelector {
     constructor(recipes, type) {
-        super(recipes, type)
+        super(recipes, type )
     }
 
     loadRecipes(recipes) {
@@ -11,5 +11,3 @@ export default class ApplianceSelector extends AbstractSelector {
     }
 }
 
-const applianceSelector = new ApplianceSelector(recipes, 'Appliance')
-applianceSelector.displaySelectableItems()
