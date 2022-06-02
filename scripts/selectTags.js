@@ -20,6 +20,12 @@ export default class TagList {
     this.tags.forEach((tag) => {
       const button = document.createElement('button')
       button.textContent = tag.label
+      button.className = 'btn keyword-tag'
+      const img = document.createElement('img')
+      img.src = './Img/cross.svg'
+      img.className = 'deleted-tag'
+
+      button.appendChild(img)
       tagList.appendChild(button)
 
       button.addEventListener('click', () => {

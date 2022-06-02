@@ -48,11 +48,14 @@ body{
 /*Tags*/
 .tags{
     margin-left: 30px;
+    display: flex;
 }
 .keyword-tag{
     display: flex;
     align-items: center;
+    background-color: green;
     gap: 6px;
+    margin: 10px
 }
 
 /*Recipe cards*/
