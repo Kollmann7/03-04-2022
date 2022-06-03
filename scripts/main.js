@@ -28,9 +28,12 @@ class Page {
   
   onSearchBar(e){
     this.searchBarValue = e.target.value
-    
-    clearTimeout(this.timeOutId)
-    this.timeOutId = setTimeout(this.refresh.bind(this), 300)
+       
+    if(this.searchBarValue.length >= 3){
+      clearTimeout(this.timeOutId)
+      this.timeOutId = setTimeout(this.refresh.bind(this), 300)
+    }
+  
   }
   
   onRemoveTag(tag){
