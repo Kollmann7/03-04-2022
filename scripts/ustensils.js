@@ -2,8 +2,9 @@ import recipes from './data/recipes.js';
 import AbstractSelector from './abstractSelector.js';
 
 export default class UstensilSelector extends AbstractSelector {
-    constructor(recipes, type) {
-      super(recipes, type)
+    constructor(recipes, type, selectItemCallback, name) {
+      super(recipes, type, selectItemCallback, name)
+
     }
     
     loadRecipes(recipes) {

@@ -1,10 +1,11 @@
 import recipes from './data/recipes.js'
 
 export default class AbstractSelector {
-    constructor(recipes, type, selectItemCallback) {
+    constructor(recipes, type, selectItemCallback, name) {
       this.loadRecipes(recipes)
       this.type = type
       this.selectItemCallback = selectItemCallback
+      this.name = name
       this.selectorDOM()
     }
     selectorDOM(){
@@ -14,11 +15,11 @@ export default class AbstractSelector {
       btnGroup.className = 'btn-group'
 
       const button = document.createElement('div')
-      button.className = 'btn btn-success dropdown-toggle'
+      button.classList.add('btn', `${this.type}-color`, 'dropdown-toggle') 
       button.setAttribute('data-bs-toggle','dropdown')
 
       const textSelector = document.createElement('span')
-      textSelector.textContent = this.type
+      textSelector.textContent = this.name
       textSelector.className = 'selector-name'
 
       button.appendChild(textSelector)
@@ -34,7 +35,7 @@ export default class AbstractSelector {
       
       const input = document.createElement('input')
       input.type = 'text'
-      input.placeholder = 'Recherche un ustensile'
+      input.placeholder = `Rechercher des ${this.name.toLowerCase()}`
       input.className = 'input-selector'
       button.addEventListener('input', () => {
           Array.from(ul.childNodes).forEach((listItem) => {
@@ -52,7 +53,7 @@ export default class AbstractSelector {
       button.appendChild(input)
 
       const ul = document.createElement('ul')
-      ul.className = 'dropdown-menu'
+      ul.classList.add('dropdown-menu', `${this.type}-color`)
 
       this.itemsList.forEach((item) => {
           const li = document.createElement('li')
@@ -67,7 +68,6 @@ export default class AbstractSelector {
       btnGroup.append(button,ul)
       dropdowns.append(btnGroup)
   
-      return dropdowns
     }
     loadRecipes(recipes) {
       throw new Error('loadRecipes should be implemented')
@@ -75,10 +75,9 @@ export default class AbstractSelector {
     displaySelectableItems() {
       console.log(this.type, 'list :', this.itemsList)
     }
-    selectedTag(ustensil){
-      this.selectItemCallback({type:'ustensil', label:ustensil})   
+    selectedTag(label){
+      this.selectItemCallback({type:`${this.type}`, label:label})
     }
   }
 
-console.log(recipes)
 

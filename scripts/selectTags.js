@@ -10,17 +10,18 @@ export default class TagList {
   
   addTag(tag) {    
     this.tags.push(tag)
+    console.log(tag)
     this.displayTagsDOM()
   }
   
   displayTagsDOM() {
     const tagList = document.querySelector('.tags')
-
     tagList.innerHTML = ''
     this.tags.forEach((tag) => {
       const button = document.createElement('button')
       button.textContent = tag.label
-      button.className = 'btn keyword-tag'
+      button.classList.add('btn',`${tag.type}-color`, 'keyword-tag')
+      console.log(tag.type)
       const img = document.createElement('img')
       img.src = './Img/cross.svg'
       img.className = 'deleted-tag'
@@ -37,6 +38,7 @@ export default class TagList {
   
   removeTag(tag) {
     this.tags = this.tags.filter((t) => t !== tag)
+    console.log(tag)
     this.displayTagsDOM()
   }
 }
