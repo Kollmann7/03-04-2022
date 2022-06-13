@@ -121,9 +121,6 @@ export default class RecipeList {
     const tagsUstensil = tags.filter( tag => tag.type === TAG_TYPE.USTENSIL).map(tag => tag.label)
     const tagsIngredient = tags.filter( tag => tag.type === TAG_TYPE.INGREDIENT).map(tag => tag.label)
     
-    console.log('filtering tagsAppliances',tagsAppliances)
-    console.log('filtering tagsUstensil',tagsUstensil)
-    console.log('filtering tagsIngredient',tagsIngredient)
     
     let filterList = this.recipes
       .filter( recipe => (

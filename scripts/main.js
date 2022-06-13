@@ -31,8 +31,8 @@ class Page {
     this.ingredientSelector.loadRecipes(recipes)
     this.ustensilSelector.loadRecipes(recipes)
     this.applianceSelector.loadRecipes(recipes)
-
   }
+  
   onSearchBar(e){
     this.searchBarValue = e.target.value
        

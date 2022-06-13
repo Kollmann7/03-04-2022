@@ -10,7 +10,6 @@ export default class TagList {
   
   addTag(tag) {    
     this.tags.push(tag)
-    console.log(tag)
     this.displayTagsDOM()
   }
   
@@ -38,7 +37,6 @@ export default class TagList {
   
   removeTag(tag) {
     this.tags = this.tags.filter((t) => t !== tag)
-    console.log(tag)
     this.displayTagsDOM()
   }
 }
