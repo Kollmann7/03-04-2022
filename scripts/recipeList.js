@@ -14,10 +14,10 @@ export default class RecipeList {
     const ingredientName = document.createElement('strong')
     const ingredientQuantity = document.createElement('span')
 
-    if(unit === null){
-      ingredientName.textContent = ingredient
+    if(!unit ){
+      ingredientName.textContent = `${ingredient}: `
       ingredientQuantity.textContent = quantity
-      li.appendChild(ingredientName, ingredientQuantity)
+      li.append(ingredientName, ingredientQuantity)
     }
     else {
       ingredientName.textContent = `${ingredient}: `
@@ -111,12 +111,12 @@ export default class RecipeList {
       (tagsAppliances.length === 0 || tagsAppliances.includes(recipe.appliance)) 
       && (tagsUstensil.length === 0 || tagsUstensil.every( ustensilTag => recipe.containsUstensil(ustensilTag)))
       && (tagsIngredient.length === 0 || tagsIngredient.every( ingredientTag => recipe.containsIngredient(ingredientTag)))
-      && (recipe => recipe.nameIncludeText(searchBar) || recipe.descIncludeText(searchBar))
+      && (recipe.nameIncludeText(searchBar) || recipe.descIncludeText(searchBar))
     )
   }
 
   filtering(tags, searchBar) {
-    console.log('filtering searchBar',searchBar)
+
     const tagsAppliances = tags.filter( tag => tag.type === TAG_TYPE.APPLIANCE).map(tag => tag.label)
     const tagsUstensil = tags.filter( tag => tag.type === TAG_TYPE.USTENSIL).map(tag => tag.label)
     const tagsIngredient = tags.filter( tag => tag.type === TAG_TYPE.INGREDIENT).map(tag => tag.label)
@@ -126,8 +126,6 @@ export default class RecipeList {
       .filter( recipe => (
         this.recipeVerifySearch(tagsAppliances, tagsUstensil, tagsIngredient, searchBar, recipe)
       )) 
-
-    console.log('Filter SEARCH',filterList)
 
     if (filterList.length > 0){
       this.recipesListDOM(filterList)
