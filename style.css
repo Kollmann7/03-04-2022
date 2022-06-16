@@ -11,19 +11,65 @@ body{
 .dropdowns{
     margin: 30px 0 0 20px;
 }
-.ingredients-color{
+.btn-group{
+    margin: 10px 
+}
+.ingredient-color{
     background-color: #007bff; 
 }
-.ustensils-color{
-    background-color: #28a745;
-}
-.appareil-color{
+.ustensil-color{
     background-color: #dc3545;
+}
+.appliance-color{
+    background-color: #28a745;
 }
 .dropdown-menu{
     color:#fff;
 }
+.selector-name{
+    color:#fff
+}
+.selector-name-display-none{
+    display: none;
+}
+.selector-name-display{
+    display: block;
+}
+.input-selector-display-none{
+    display: none;
+    border: none;
+    background: inherit;
+}
+.input-selector ::placeholder{
+    color: white;
+    
+}
+.input-selector-display{
+    border: none;
+    background: inherit;
+}
+/* .dropdown-menu {
+    display: grid;
+    padding: 8px 16px 16px 16px;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    row-gap: 8px; 
+    column-gap: 8px;
+    max-height: 300px;
+    overflow-y: auto; 
+}   */
 
+.style-dropdown{
+    display: grid;
+    padding: 8px 16px 16px 16px;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    row-gap: 8px; 
+    column-gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+#ustensilsSearch{
+    display:none;
+}
 /*Search Bar*/
 .main-search{
     width:100%;
@@ -53,7 +99,6 @@ body{
 .keyword-tag{
     display: flex;
     align-items: center;
-    background-color: green;
     gap: 6px;
     margin: 10px
 }
