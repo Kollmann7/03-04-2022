@@ -1,12 +1,13 @@
 import recipes from './data/recipes.js'
 
 export default class AbstractSelector {
-    constructor(recipes, type, selectItemCallback, name) {
-      this.loadRecipes(recipes)
+    constructor(recipes, type, selectItemCallback, name, update) {
       this.type = type
       this.selectItemCallback = selectItemCallback
       this.name = name
+      this.update = update
       this.selectorDOM()
+      this.loadRecipes(recipes)
     }
     selectorDOM(){
       const dropdowns = document.getElementById('dropdowns-container')
@@ -24,27 +25,26 @@ export default class AbstractSelector {
 
       button.appendChild(textSelector)
       button.addEventListener('click', () => {
-          input.className = 'input-selector-display'  
-          if(textSelector.style.display  === 'none' && input.value === null){
-              textSelector.style.display  = 'block'
-          }else(textSelector.style.display  === 'block' && input.value != null)
-          {
-              textSelector.style.display  = 'none'
-          }
+          input.className = 'input-selector-display'
+          textSelector.className = 'selector-name-display-none'
       })
-      
+      btnGroup.addEventListener('hide.bs.dropdown', () => {
+          input.className = 'input-selector-display-none'
+          textSelector.className = 'selector-name'
+
+        console.log('click')
+      })
+
       const input = document.createElement('input')
       input.type = 'text'
       input.placeholder = `Rechercher des ${this.name.toLowerCase()}`
-      input.className = 'input-selector'
+      input.className = 'input-selector-display-none'
       button.addEventListener('input', () => {
           Array.from(ul.childNodes).forEach((listItem) => {
               const item = listItem.textContent.toLowerCase()
               if (!item.includes(input.value)) {
-                  console.log(item.value)
                   listItem.style.display = 'none'
               } else {
-                  console.log(item)
                   listItem.style.display = 'block'
               }
           })
@@ -53,28 +53,30 @@ export default class AbstractSelector {
       button.appendChild(input)
 
       const ul = document.createElement('ul')
-      ul.classList.add('dropdown-menu', `${this.type}-color`)
+      ul.classList.add('dropdown-menu', `${this.type}-color`)      
+      this.ul = ul
 
-      this.itemsList.forEach((item) => {
-          const li = document.createElement('li')
-          li.textContent = item
-          li.className = 'dropdown-item'
-          ul.appendChild(li)
-          li.addEventListener('click', () => {
-              this.selectedTag(item)
-          })
-      })
-      
       btnGroup.append(button,ul)
       dropdowns.append(btnGroup)
-  
+      
+    }
+    refreshList(){
+      this.ul.innerHTML= ''
+      
+      this.itemsList.forEach((item) => {
+        const li = document.createElement('li')
+        li.textContent = item
+        li.className = 'dropdown-item'
+        this.ul.appendChild(li)
+        li.addEventListener('click', () => {
+          this.selectedTag(item)
+        })
+      })
     }
     loadRecipes(recipes) {
-      throw new Error('loadRecipes should be implemented')
+      this.refreshList()
     }
-    displaySelectableItems() {
-      console.log(this.type, 'list :', this.itemsList)
-    }
+    
     selectedTag(label){
       this.selectItemCallback({type:`${this.type}`, label:label})
     }
