@@ -16,14 +16,24 @@
         </h1>
     </header>
     <main>
-    <label for="main-search" class="main-search">
-      <input type="search" id="form1" class="form-control search-bar" placeholder="Rechercher une recette"/>
-    </label>
-    <div class="tags">
-    </div>
-    <div class="dropdowns" id="dropdowns-container">
+    <section class="search-bar-container">
+      <div class="search-bar">
+        <form id="searchForm" class="searchBar" name="searchBar" action="index.html" method="GET">
+          <label for="searchBar"> </label>
+          <div class="col-12 col-sm-12">
+            <input type="search" class="p-3" id="searchBar" placeholder="Rechercher une recette" autocomplete="off"/>
+              <button id="searchBar__button" type="submit"></button>
+          </div>
+        </form>
+      </div>
+    </section class="tags-container">
+      <div class="tags">
+      </div>
+    </section>
+    <section class="dropdown-container">
+      <div class="dropdowns row" id="dropdowns-container">
+    </section>    
 
-      
     </div>
     <section class="recipes">
       <div class="container" id='recipe-container'>
@@ -37,3 +47,10 @@
 
 </body>
 </html>
+
+
+<!-- <label for="main-search" class="main-search">
+  <input type="search" id="form1" class="form-control search-bar" placeholder="Rechercher une recette"/>
+  <button id="searchBar__button" type="submit">
+  </button>
+</label> -->
