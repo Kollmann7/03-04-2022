@@ -20,7 +20,6 @@ export default class TagList {
       const button = document.createElement('button')
       button.textContent = tag.label
       button.classList.add('btn',`${tag.type}-color`, 'keyword-tag')
-      console.log(tag.type)
       const img = document.createElement('img')
       img.src = './Img/cross.svg'
       img.className = 'deleted-tag'
