@@ -9,14 +9,21 @@ export default class AbstractSelector {
       this.selectorDOM()
       this.loadRecipes(recipes)
     }
+    createArrowIMG() {
+      const img = document.createElement('img');
+      img.src = 'dist/img/arrow.svg';
+      img.alt = 'flèche';
+      return img;
+    }
+  
     selectorDOM(){
       const dropdowns = document.getElementById('dropdowns-container')
-  
+    
       const btnGroup = document.createElement('div')
-      btnGroup.className = 'btn-group'
+      btnGroup.classList.add('btn-group','col-sm-4', 'col-lg-2')
 
       const button = document.createElement('div')
-      button.classList.add('btn', `${this.type}-color`, 'dropdown-toggle') 
+      button.classList.add('btn', `${this.type}-color`, 'dropdown-toggle', 'dropdown') 
       button.setAttribute('data-bs-toggle','dropdown')
 
       const textSelector = document.createElement('span')
@@ -27,12 +34,15 @@ export default class AbstractSelector {
       button.addEventListener('click', () => {
           input.className = 'input-selector-display'
           textSelector.className = 'selector-name-display-none'
+          btnGroup.className = 'col-lg-6'
+          this.ul.removeAttribute('style')
       })
       btnGroup.addEventListener('hide.bs.dropdown', () => {
           input.className = 'input-selector-display-none'
           textSelector.className = 'selector-name'
+          btnGroup.classList.remove('col-lg-6')
+          btnGroup.classList.add('btn-group','col-sm-4', 'col-lg-2')
 
-        console.log('click')
       })
 
       const input = document.createElement('input')
@@ -51,11 +61,16 @@ export default class AbstractSelector {
       })
 
       button.appendChild(input)
+      // const divUl = document.createElement('div')
+      // divUl.className = 'dropdown-menu'
 
       const ul = document.createElement('ul')
-      ul.classList.add('dropdown-menu', `${this.type}-color`)      
+      ul.classList.add('dropdown-menu', `${this.type}-color`, 'col-sm-12', )
+      ul.removeAttribute('style')      
       this.ul = ul
+      this.ul.removeAttribute('style')
 
+      // divUl.appendChild(ul)
       btnGroup.append(button,ul)
       dropdowns.append(btnGroup)
       
@@ -66,7 +81,7 @@ export default class AbstractSelector {
       this.itemsList.forEach((item) => {
         const li = document.createElement('li')
         li.textContent = item
-        li.className = 'dropdown-item'
+        li.classList.add('dropdown-item','col-4' ,'col-sm-6', 'col-lg-12','display-inline')
         this.ul.appendChild(li)
         li.addEventListener('click', () => {
           this.selectedTag(item)
