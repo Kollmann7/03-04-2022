@@ -15,24 +15,24 @@ class Page {
     this.ingredientSelector = new IngredientSelector(recipes, INGREDIENTS, this.onAddTag.bind(this),INGREDIENTSINFRENCH)
     this.applianceSelector = new ApplianceSelector(recipes, APPLIANCES, this.onAddTag.bind(this), APPLIANCESINFRENCH)
     this.ustensilSelector = new UstensilSelector(recipes, USTENSILS, this.onAddTag.bind(this),USTENSILSINFRENCH)
-    const searchBarForm = document.getElementById('form1')
+    const searchBarForm = document.getElementById('searchBar')
+    this.searchBarValue = ''
     searchBarForm.addEventListener('input', this.onSearchBar.bind(this))
     this.tagList.displayTagsDOM()
     this.refresh()
   }
   
-  refresh() {
+  refresh(){
     const recipeListfilter = this.recipeList.filtering(this.tagList.tags, this.searchBarValue)
     this.updsateSelector(recipeListfilter)
-    console.log(recipeListfilter)
   }
   
   updsateSelector(recipes){
     this.ingredientSelector.loadRecipes(recipes)
-    this.ustensilSelector.loadRecipes(recipes)
     this.applianceSelector.loadRecipes(recipes)
+    this.ustensilSelector.loadRecipes(recipes)
   }
-  
+
   onSearchBar(e){
     this.searchBarValue = e.target.value
        
@@ -47,7 +47,7 @@ class Page {
     this.refresh()
   }
 
-  onAddTag(tag) {
+  onAddTag(tag){
     if (!this.tagList.tags.some(t => t.label === tag.label)){
       this.tagList.addTag(tag)
       this.refresh()
