@@ -11,6 +11,5 @@ export default class IngredientSelector extends AbstractSelector {
     this.ingredientsList = recipes.map(r => r.ingredients).flat()
     this.itemsList = Array.from(new Set(this.ingredientsList.map(i => i.ingredient)))
     super.loadRecipes()
-    console.log(this.itemsList)
   }
 }

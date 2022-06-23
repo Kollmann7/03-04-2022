@@ -9,7 +9,6 @@ export default class UstensilSelector extends AbstractSelector {
     loadRecipes(recipes) {
       this.itemsList = Array.from(new Set(recipes.map(r => r.ustensils).flat()))
       super.loadRecipes()
-      console.log(this.itemsList)
     }
   }
 

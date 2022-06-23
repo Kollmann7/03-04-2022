@@ -10,7 +10,6 @@ export default class ApplianceSelector extends AbstractSelector {
     loadRecipes(recipes) {
         this.itemsList = Array.from(new Set(recipes.map(r => r.appliance)))
         super.loadRecipes()
-        console.log(this.itemsList)
     }
 }
 
