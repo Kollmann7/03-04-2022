@@ -21,7 +21,7 @@ export default class RecipeList {
     }
     else {
       ingredientName.textContent = `${ingredient}: `
-      ingredientQuantity.textContent = quantity + unit
+      ingredientQuantity.textContent = `${quantity + ' ' + unit} `
       li.append(ingredientName, ingredientQuantity)
     }
     return li
@@ -111,7 +111,7 @@ export default class RecipeList {
       (tagsAppliances.length === 0 || tagsAppliances.includes(recipe.appliance)) 
       && (tagsUstensil.length === 0 || tagsUstensil.every( ustensilTag => recipe.containsUstensil(ustensilTag)))
       && (tagsIngredient.length === 0 || tagsIngredient.every( ingredientTag => recipe.containsIngredient(ingredientTag)))
-      && (recipe.nameIncludeText(searchBar) || recipe.descIncludeText(searchBar))
+      && (recipe.nameIncludeText(searchBar) || recipe.descIncludeText(searchBar) || recipe.containsIngredient(searchBar))
     )
   }
 
