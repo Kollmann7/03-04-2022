@@ -150,9 +150,9 @@ export default class RecipeList {
       .filter( recipe => (
         this.searchBarVerifySearch( searchBar, recipe)
     ))
-
-    if (filterList.length > 0){
-      this.recipesListDOM(filterList)
+    
+    if (filterList4.length > 0){
+      this.recipesListDOM(filterList4)
     }else{
       this.noResultDOM()
     }
