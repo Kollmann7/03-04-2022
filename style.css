@@ -148,6 +148,7 @@ input:focus-visible {
     align-items: center;
     gap: 6px;
     margin: 15px;
+    color:white;
 }
 
 /*Recipe cards*/
