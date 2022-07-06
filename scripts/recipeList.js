@@ -106,12 +106,24 @@ export default class RecipeList {
     return noRecipesDOM
   }
 
-  recipeVerifySearch(tagsAppliances, tagsUstensil, tagsIngredient, searchBar, recipe){
+  tagsAppliancesVerifySearch(tagsAppliances,  recipe){
     return (
       (tagsAppliances.length === 0 || tagsAppliances.includes(recipe.appliance)) 
-      && (tagsUstensil.length === 0 || tagsUstensil.every( ustensilTag => recipe.containsUstensil(ustensilTag)))
-      && (tagsIngredient.length === 0 || tagsIngredient.every( ingredientTag => recipe.containsIngredient(ingredientTag)))
-      && (recipe.nameIncludeText(searchBar) || recipe.descIncludeText(searchBar) || recipe.containsIngredient(searchBar))
+    )
+  }
+  tagsUstensilVerifySearch( tagsUstensil, recipe){
+    return (
+      (tagsUstensil.length === 0 || tagsUstensil.every( ustensilTag => recipe.containsUstensil(ustensilTag)))
+    )
+  }
+  tagsIngredientVerifySearch( tagsIngredient,  recipe){
+    return (
+      (tagsIngredient.length === 0 || tagsIngredient.every( ingredientTag => recipe.containsIngredient(ingredientTag)))
+    )
+  }
+  searchBarVerifySearch( searchBar, recipe){
+    return (
+      (recipe.nameIncludeText(searchBar) || recipe.descIncludeText(searchBar) || recipe.containsIngredient(searchBar))
     )
   }
 
@@ -124,15 +136,27 @@ export default class RecipeList {
     
     let filterList = this.recipes
       .filter( recipe => (
-        this.recipeVerifySearch(tagsAppliances, tagsUstensil, tagsIngredient, searchBar, recipe)
-      )) 
+        this.tagsAppliancesVerifySearch(tagsAppliances, recipe)
+      ))
+    let filterList2 = filterList
+      .filter( recipe => (
+        this.tagsUstensilVerifySearch(tagsUstensil, recipe)
+      ))
+    let filterList3 = filterList2     
+      .filter( recipe => (
+        this.tagsIngredientVerifySearch(tagsIngredient, recipe)
+      ))
+    let filterList4 = filterList3    
+      .filter( recipe => (
+        this.searchBarVerifySearch( searchBar, recipe)
+    ))
 
     if (filterList.length > 0){
       this.recipesListDOM(filterList)
     }else{
       this.noResultDOM()
     }
-    return  filterList
+    return  filterList4
   }
 }
 
